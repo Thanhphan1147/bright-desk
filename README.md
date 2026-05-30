@@ -33,3 +33,4 @@ npm run build
 - `DESIGN.md`
 - `TODO.md`
 - `.github/copilot-instructions.md`
+- `docs/snap.md`

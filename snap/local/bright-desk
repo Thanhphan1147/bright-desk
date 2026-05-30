@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+HOST_VALUE="$(snapctl get host 2>/dev/null || true)"
+PORT_VALUE="$(snapctl get port 2>/dev/null || true)"
+WORKSPACE_VALUE="$(snapctl get workspace 2>/dev/null || true)"
+
+export HOST="${HOST_VALUE:-0.0.0.0}"
+export PORT="${PORT_VALUE:-3300}"
+export BRIGHT_DESK_WORKSPACE="${WORKSPACE_VALUE:-$SNAP_COMMON/workspace}"
+
+mkdir -p "$BRIGHT_DESK_WORKSPACE"
+
+exec "$SNAP/bin/node" "$SNAP/app/build/index.js"
