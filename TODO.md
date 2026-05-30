@@ -27,11 +27,11 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 ## Step 2 - Workspace Configuration
 
-- [ ] Add server-side configuration for the workspace path.
-- [ ] Support configuration through environment variable first.
-- [ ] Validate that the workspace path exists and is a directory.
-- [ ] Restrict all project file operations to paths inside the configured workspace.
-- [ ] Add visible UI states for missing workspace, inaccessible workspace, and invalid workspace path.
+- [x] Add server-side configuration for the workspace path.
+- [x] Support configuration through environment variable first.
+- [x] Validate that the workspace path exists and is a directory.
+- [x] Restrict all project file operations to paths inside the configured workspace.
+- [x] Add visible UI states for missing workspace, inaccessible workspace, and invalid workspace path.
 
 **Done when:** the app can start against a configured workspace directory and safely refuses invalid paths.
 

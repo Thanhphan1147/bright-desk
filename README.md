@@ -15,8 +15,13 @@ npm install
 Start the development server:
 
 ```sh
+BRIGHT_DESK_WORKSPACE=/path/to/workspace
 npm run dev
 ```
+
+`BRIGHT_DESK_WORKSPACE` must point to an existing directory. Bright Desk refuses project file
+operations outside that configured workspace and shows a visible state when the path is missing,
+invalid, or inaccessible.
 
 Run validation:
 

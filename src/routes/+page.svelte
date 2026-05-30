@@ -1,4 +1,8 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+
 	const projects = [
 		{ name: 'Bright Desk', repo: 'Thanhphan1147/bright-desk', decisions: 0, tasks: 11, blocked: 0 },
 		{
@@ -45,6 +49,24 @@
 	const baseCard = 'rounded-[1.25rem] border border-border bg-surface';
 	const eyebrow = 'text-xs font-bold tracking-[0.08em] text-muted uppercase';
 	const chip = 'rounded-full px-2.5 py-1 text-[0.8125rem] font-bold';
+	const workspaceState = {
+		ready: {
+			label: 'Workspace ready',
+			classes: 'border-success bg-success-soft text-success'
+		},
+		missing: {
+			label: 'Workspace missing',
+			classes: 'border-warning bg-warning-soft text-warning'
+		},
+		invalid: {
+			label: 'Workspace invalid',
+			classes: 'border-danger bg-danger-soft text-danger'
+		},
+		inaccessible: {
+			label: 'Workspace inaccessible',
+			classes: 'border-danger bg-danger-soft text-danger'
+		}
+	} as const;
 </script>
 
 <svelte:head>
@@ -101,6 +123,40 @@
 	</aside>
 
 	<section class="grid min-w-0 content-start gap-4" aria-labelledby="project-title">
+		<section
+			class={`rounded-[1.25rem] border p-4 ${workspaceState[data.workspace.status].classes}`}
+			aria-labelledby="workspace-status-title"
+		>
+			<div class="grid gap-2 md:flex md:items-start md:justify-between">
+				<div>
+					<p class="text-xs font-bold tracking-[0.08em] uppercase">
+						{workspaceState[data.workspace.status].label}
+					</p>
+					<h2 id="workspace-status-title" class="text-lg font-bold">
+						{#if data.workspace.status === 'ready'}
+							Project files are constrained to the configured workspace.
+						{:else}
+							Workspace configuration needs attention.
+						{/if}
+					</h2>
+					<p class="mt-1">
+						{#if data.workspace.status === 'ready'}
+							Bright Desk will only read and write below this directory.
+						{:else}
+							{data.workspace.message}
+						{/if}
+					</p>
+				</div>
+				<code class="break-anywhere rounded-xl bg-white/55 px-3 py-2 font-mono text-[0.8125rem]">
+					{#if data.workspace.status === 'missing'}
+						{data.workspace.variable}
+					{:else}
+						{data.workspace.path}
+					{/if}
+				</code>
+			</div>
+		</section>
+
 		<header class={`${baseCard} grid gap-4 p-5 md:flex md:items-start md:justify-between`}>
 			<div>
 				<p class={eyebrow}>Selected project</p>
