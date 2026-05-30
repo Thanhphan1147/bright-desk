@@ -20,6 +20,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 - [x] Require LXD-based Snapcraft builds and prohibit destructive mode.
 - [x] Document supported workspace locations under strict confinement.
 - [x] Expose Snap configuration for workspace path, host, and port.
+- [x] Default the Snap workspace configuration to `/home/workspace`.
 - [x] Document that MVP authentication is not included and network access must be restricted externally.
 - [x] Add a repeatable packaged E2E validation flow using the Snap and Chrome DevTools MCP.
 
