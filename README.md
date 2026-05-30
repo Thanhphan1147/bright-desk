@@ -22,7 +22,8 @@ Run validation:
 
 ```sh
 npm run check
-npm run test -- --run
+npm run lint
+npm test
 npm run build
 ```
 

@@ -113,6 +113,8 @@
 				<a
 					class="font-mono text-muted hover:text-primary"
 					href="https://github.com/Thanhphan1147/bright-desk"
+					target="_blank"
+					rel="noopener noreferrer"
 				>
 					github.com/Thanhphan1147/bright-desk
 				</a>
