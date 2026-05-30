@@ -43,13 +43,15 @@ Use these source documents as implementation references:
 
 End-to-end validation is performed manually/agentically after packaging:
 
-1. Repack the Snap.
+1. Repack the Snap using LXD: `snapcraft pack --use-lxd`.
 2. Deploy or refresh the Snap on this host.
 3. Verify the new functionality in the browser using the `chrome-dev-tools` MCP server.
 4. A headless Chrome service is expected to already be running on this host. If it is not running, start it before validation.
 5. Only mark work as done when both unit tests and the E2E validation pass.
 
 The E2E validation should exercise the feature changed by the task and confirm that the browser UI works against the packaged Snap, not only the local development server.
+
+Never use Snapcraft destructive mode for this repository. Install, initialize, and use LXD when Snap packaging is required.
 
 ## UI and Design Requirements
 
@@ -64,6 +66,8 @@ The E2E validation should exercise the feature changed by the task and confirm t
 
 ## Pull Request Expectations
 
+- Before starting a new `TODO.md` implementation task, checkout `main` and pull the latest remote changes.
+- Create a new feature branch from updated `main` for each feature-scoped task.
 - Keep PRs feature-scoped.
 - Include a concise summary of the user-visible change.
 - Include unit test results.

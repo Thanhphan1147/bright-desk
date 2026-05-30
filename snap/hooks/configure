@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+snapctl get host >/dev/null 2>&1 || true
+snapctl get port >/dev/null 2>&1 || true
+snapctl get workspace >/dev/null 2>&1 || true

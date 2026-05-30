@@ -1,0 +1,49 @@
+name: bright-desk
+base: core24
+version: '0.0.1'
+summary: Browser workspace for AI-agent tasks and human decisions
+description: |
+  Bright Desk is a minimal SvelteKit web application for managing AI-agent
+  task workspaces from a browser. The MVP focuses on project discovery,
+  YAML-backed tasks, pending human decisions, and task Git branch metadata.
+
+grade: devel
+confinement: strict
+
+apps:
+  bright-desk:
+    command: bin/bright-desk
+    daemon: simple
+    restart-condition: on-failure
+    plugs:
+      - network
+      - network-bind
+      - home
+
+parts:
+  bright-desk:
+    plugin: nil
+    source: .
+    build-packages:
+      - ca-certificates
+      - curl
+      - xz-utils
+    override-build: |
+      NODE_VERSION="22.16.0"
+      NODE_DIST="node-v${NODE_VERSION}-linux-x64"
+
+      curl --fail --location --retry 5 "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.xz" --output node.tar.xz
+      mkdir -p node
+      tar -xJf node.tar.xz -C node --strip-components=1
+
+      export PATH="$PWD/node/bin:$PATH"
+
+      npm ci
+      npm run build
+
+      mkdir -p "$CRAFT_PART_INSTALL/app" "$CRAFT_PART_INSTALL/bin" "$CRAFT_PART_INSTALL/usr"
+      cp -R node "$CRAFT_PART_INSTALL/usr/node"
+      ln -s ../usr/node/bin/node "$CRAFT_PART_INSTALL/bin/node"
+      cp -R build "$CRAFT_PART_INSTALL/app/build"
+      cp snap/local/bright-desk "$CRAFT_PART_INSTALL/bin/bright-desk"
+      chmod 0755 "$CRAFT_PART_INSTALL/bin/bright-desk"

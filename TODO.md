@@ -14,13 +14,14 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 ## Step 1 - Snap Packaging
 
-- [ ] Add Snap packaging configuration.
-- [ ] Package the SvelteKit app as a service suitable for a headless server.
-- [ ] Use strict confinement.
-- [ ] Document supported workspace locations under strict confinement.
-- [ ] Expose Snap configuration for workspace path, host, and port.
-- [ ] Document that MVP authentication is not included and network access must be restricted externally.
-- [ ] Add a repeatable packaged E2E validation flow using the Snap and Chrome DevTools MCP.
+- [x] Add Snap packaging configuration.
+- [x] Package the SvelteKit app as a service suitable for a headless server.
+- [x] Use strict confinement.
+- [x] Require LXD-based Snapcraft builds and prohibit destructive mode.
+- [x] Document supported workspace locations under strict confinement.
+- [x] Expose Snap configuration for workspace path, host, and port.
+- [x] Document that MVP authentication is not included and network access must be restricted externally.
+- [x] Add a repeatable packaged E2E validation flow using the Snap and Chrome DevTools MCP.
 
 **Done when:** the app can be installed and run as a strictly confined Snap, and the static Bright Desk shell can be verified through the packaged deployment.
 
