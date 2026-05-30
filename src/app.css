@@ -1,0 +1,51 @@
+:root {
+	color-scheme: light;
+	font-family:
+		'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', 'Source Sans 3', system-ui, sans-serif;
+	background: #fbfaf7;
+	color: #1f2523;
+
+	--color-bg: #fbfaf7;
+	--color-surface: #ffffff;
+	--color-surface-muted: #f3f1eb;
+	--color-border: #dedbd2;
+	--color-text: #1f2523;
+	--color-text-muted: #66706b;
+	--color-primary: #246bfe;
+	--color-primary-soft: #e8efff;
+	--color-decision: #0f8b8d;
+	--color-decision-soft: #e4f6f6;
+	--color-success: #168a5b;
+	--color-success-soft: #e8f6ef;
+	--color-warning: #b7791f;
+	--color-warning-soft: #fff4d8;
+	--color-danger: #c2413a;
+	--color-danger-soft: #fdebea;
+	--color-focus: #ffb703;
+	--font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at 1px 1px, rgb(31 37 35 / 5%) 1px, transparent 0) 0 0 / 24px 24px,
+		var(--color-bg);
+}
+
+button,
+input,
+textarea {
+	font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 3px;
+}

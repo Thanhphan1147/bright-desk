@@ -1,0 +1,525 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<title>Bright Desk - Agent Workspace</title>
+		<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+		<script id="tailwind-config">
+			tailwind.config = {
+				darkMode: 'class',
+				theme: {
+					extend: {
+						colors: {
+							background: '#fbfaf7',
+							surface: '#ffffff',
+							'muted-surface': '#f3f1eb',
+							border: '#dedbd2',
+							'primary-text': '#1f2523',
+							'muted-text': '#66706b',
+							'primary-action': '#246bfe',
+							'primary-soft': '#e8efff',
+							'decision-teal': '#0f8b8d',
+							'decision-soft': '#e4f6f6',
+							success: '#168a5b',
+							'success-soft': '#e8f6ef',
+							warning: '#b7791f',
+							'warning-soft': '#fff4d8',
+							danger: '#c2413a',
+							'danger-soft': '#fdebea',
+							focus: '#ffb703'
+						},
+						borderRadius: {
+							DEFAULT: '0.5rem',
+							lg: '1rem',
+							xl: '1.5rem',
+							full: '9999px'
+						},
+						fontFamily: {
+							headline: ['Atkinson Hyperlegible Next', 'sans-serif'],
+							display: ['Atkinson Hyperlegible Next', 'sans-serif'],
+							body: ['Atkinson Hyperlegible Next', 'sans-serif'],
+							label: ['Atkinson Hyperlegible Next', 'sans-serif'],
+							mono: ['JetBrains Mono', 'IBM Plex Mono', 'monospace']
+						}
+					}
+				}
+			};
+		</script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=JetBrains+Mono&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			body {
+				font-family: 'Atkinson Hyperlegible Next', sans-serif;
+				background-color: #fbfaf7;
+				color: #1f2523;
+			}
+			.font-mono {
+				font-family: 'JetBrains Mono', monospace;
+			}
+			.material-symbols-outlined {
+				font-variation-settings:
+					'FILL' 0,
+					'wght' 400,
+					'GRAD' 0,
+					'opsz' 24;
+			}
+
+			/* Focus styles for accessibility */
+			*:focus-visible {
+				outline: 2px solid #ffb703;
+				outline-offset: 2px;
+			}
+
+			/* Subtle paper texture */
+			.paper-bg {
+				background-color: #fbfaf7;
+				background-image: radial-gradient(#dedbd2 1px, transparent 1px);
+				background-size: 20px 20px;
+			}
+		</style>
+	</head>
+	<body
+		class="paper-bg h-screen overflow-hidden flex selection:bg-primary-soft selection:text-primary-action"
+	>
+		<!-- Left Sidebar (SideNavBar Concept) -->
+		<nav
+			class="h-screen w-64 border-r border-border bg-muted-surface flex flex-col p-4 flex-shrink-0 z-10 transition-transform duration-300"
+		>
+			<div class="mb-8">
+				<h1 class="text-xl font-headline font-bold text-primary-text flex items-center gap-2">
+					<span class="material-symbols-outlined text-decision-teal">bolt</span>
+					Bright Desk
+				</h1>
+				<p class="text-sm text-muted-text mt-1">Agent workspace</p>
+			</div>
+			<div class="mb-4">
+				<h2 class="text-xs font-bold text-muted-text uppercase tracking-wider mb-2 px-2">
+					Projects
+				</h2>
+				<ul class="space-y-1">
+					<!-- Active Project -->
+					<li>
+						<a
+							class="flex items-center gap-3 px-3 py-2 text-primary-text font-bold bg-surface rounded-lg shadow-sm border border-border/50 group transition-colors duration-200"
+							href="#"
+						>
+							<span class="material-symbols-outlined text-decision-teal">folder_open</span>
+							<span class="flex-grow text-sm">Workspace UI</span>
+							<span
+								class="text-xs bg-decision-soft text-decision-teal px-1.5 py-0.5 rounded font-mono"
+								>2</span
+							>
+						</a>
+					</li>
+					<!-- Inactive Project -->
+					<li>
+						<a
+							class="flex items-center gap-3 px-3 py-2 text-muted-text hover:text-primary-text hover:bg-surface rounded-lg group transition-colors duration-200"
+							href="#"
+						>
+							<span class="material-symbols-outlined">package_2</span>
+							<span class="flex-grow text-sm">Snap Packaging</span>
+							<span class="text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded font-mono"
+								>!</span
+							>
+						</a>
+					</li>
+					<!-- Inactive Project -->
+					<li>
+						<a
+							class="flex items-center gap-3 px-3 py-2 text-muted-text hover:text-primary-text hover:bg-surface rounded-lg group transition-colors duration-200"
+							href="#"
+						>
+							<span class="material-symbols-outlined">schedule</span>
+							<span class="flex-grow text-sm">Agent Runtime Later</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<button
+					class="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-primary-action border border-primary-action rounded-lg hover:bg-primary-soft transition-colors focus:ring-2 focus:ring-focus focus:outline-none"
+				>
+					<span class="material-symbols-outlined text-sm">add</span>
+					Add project
+				</button>
+			</div>
+		</nav>
+		<!-- Main Content Area -->
+		<main class="flex-1 flex flex-col h-full overflow-hidden bg-background">
+			<!-- TopNavBar Concept -->
+			<header
+				class="flex justify-between items-center px-6 py-4 w-full bg-surface border-b border-border z-10 flex-shrink-0"
+			>
+				<div>
+					<h2 class="font-headline font-bold text-xl text-primary-text flex items-center gap-2">
+						Workspace UI
+					</h2>
+					<p class="text-sm text-muted-text mt-0.5">
+						Manage task files and human decisions for the local workspace.
+					</p>
+				</div>
+				<div class="flex items-center gap-4">
+					<!-- Metadata Chips -->
+					<div class="hidden lg:flex items-center gap-2 mr-4">
+						<span
+							class="px-2 py-1 text-xs font-mono bg-decision-soft text-decision-teal rounded border border-decision-teal/20"
+							>2 pending decisions</span
+						>
+						<span
+							class="px-2 py-1 text-xs font-mono bg-muted-surface text-primary-text rounded border border-border"
+							>5 active tasks</span
+						>
+						<span
+							class="px-2 py-1 text-xs font-mono bg-danger-soft text-danger rounded border border-danger/20"
+							>1 blocked</span
+						>
+					</div>
+					<!-- Navigation Links (Contextual to project) -->
+					<nav class="hidden md:flex items-center gap-6 mr-6">
+						<a
+							class="text-sm font-medium text-decision-teal border-b-2 border-decision-teal pb-1"
+							href="#"
+							>Decisions</a
+						>
+						<a
+							class="text-sm font-medium text-muted-text hover:text-primary-action transition-all pb-1 border-b-2 border-transparent"
+							href="#"
+							>Tasks</a
+						>
+						<a
+							class="text-sm font-medium text-muted-text hover:text-primary-action transition-all pb-1 border-b-2 border-transparent"
+							href="#"
+							>Files</a
+						>
+					</nav>
+					<!-- Actions -->
+					<button
+						class="text-muted-text hover:text-primary-action p-2 rounded-full hover:bg-primary-soft transition-colors"
+						title="Refresh"
+					>
+						<span class="material-symbols-outlined">refresh</span>
+					</button>
+					<button
+						class="flex items-center gap-2 bg-primary-action text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+					>
+						<span class="material-symbols-outlined text-sm">add</span>
+						Add Task
+					</button>
+				</div>
+			</header>
+			<!-- Scrollable Canvas -->
+			<div class="flex-1 overflow-y-auto p-6 relative">
+				<!-- Alert Banner -->
+				<div
+					class="mb-6 bg-warning-soft border border-warning/30 rounded-lg p-3 flex items-start gap-3 shadow-sm"
+					role="alert"
+				>
+					<span class="material-symbols-outlined text-warning mt-0.5">sync_problem</span>
+					<div>
+						<h3 class="text-sm font-bold text-primary-text">File changed on disk</h3>
+						<p class="text-sm text-muted-text mt-0.5">
+							Another process modified
+							<code class="font-mono text-xs bg-white px-1 rounded border border-border"
+								>pending_decisions.yaml</code
+							>. Refresh before saving to avoid conflicts.
+						</p>
+					</div>
+					<button
+						class="ml-auto text-sm font-medium text-warning hover:text-warning/80 underline mt-0.5"
+					>
+						Refresh project
+					</button>
+				</div>
+				<!-- Decisions Section -->
+				<section class="mb-10">
+					<h3 class="text-lg font-bold text-primary-text mb-4 flex items-center gap-2">
+						<span class="material-symbols-outlined text-decision-teal">psychology</span>
+						Pending Decisions
+					</h3>
+					<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+						<!-- Decision Card 1 -->
+						<div
+							class="bg-surface rounded-xl border border-decision-teal/30 p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+						>
+							<div class="absolute top-0 left-0 w-1 h-full bg-decision-teal"></div>
+							<div class="flex justify-between items-start mb-3">
+								<span class="font-mono text-xs text-muted-text">ID: DEC-092</span>
+								<span
+									class="px-2 py-0.5 text-xs font-medium bg-decision-soft text-decision-teal rounded-full border border-decision-teal/20"
+									>High Priority</span
+								>
+							</div>
+							<h4 class="text-base font-bold text-primary-text mb-2">
+								Confirm package dependency update strategy
+							</h4>
+							<p class="text-sm text-muted-text mb-4 line-clamp-2">
+								The agent suggests updating Tailwind to v3.4. This will require modifying
+								`package.json` and running `npm install`. Do you approve this automated update?
+							</p>
+							<div class="flex items-center gap-3 mt-4">
+								<button
+									class="flex-1 bg-decision-teal text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-teal-700 transition-colors"
+								>
+									Answer decision
+								</button>
+								<button
+									class="p-2 text-muted-text border border-border rounded-lg hover:bg-muted-surface transition-colors"
+									title="View associated files"
+								>
+									<span class="material-symbols-outlined text-sm">description</span>
+								</button>
+							</div>
+						</div>
+						<!-- Decision Card 2 -->
+						<div
+							class="bg-surface rounded-xl border border-decision-teal/30 p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+						>
+							<div class="absolute top-0 left-0 w-1 h-full bg-decision-teal"></div>
+							<div class="flex justify-between items-start mb-3">
+								<span class="font-mono text-xs text-muted-text">ID: DEC-093</span>
+								<span
+									class="px-2 py-0.5 text-xs font-medium bg-muted-surface text-muted-text rounded-full border border-border"
+									>Normal</span
+								>
+							</div>
+							<h4 class="text-base font-bold text-primary-text mb-2">
+								Select layout pattern for detail view
+							</h4>
+							<p class="text-sm text-muted-text mb-4 line-clamp-2">
+								Should the detail view open as a right-side panel (drawer) or a central modal? The
+								agent is blocked on implementing the UI components until this is resolved.
+							</p>
+							<div class="flex items-center gap-3 mt-4">
+								<button
+									class="flex-1 bg-decision-soft text-decision-teal border border-decision-teal/30 py-2 px-4 rounded-lg text-sm font-medium hover:bg-decision-teal hover:text-white transition-colors"
+								>
+									Review options
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- Tasks Section -->
+				<section>
+					<div class="flex justify-between items-center mb-4">
+						<h3 class="text-lg font-bold text-primary-text flex items-center gap-2">
+							<span class="material-symbols-outlined text-muted-text">checklist</span>
+							Active Tasks
+						</h3>
+						<div class="flex gap-2">
+							<span
+								class="px-2 py-1 text-xs font-mono bg-surface rounded border border-border cursor-pointer hover:bg-muted-surface"
+								>All</span
+							>
+							<span
+								class="px-2 py-1 text-xs font-mono bg-warning-soft text-warning rounded border border-warning/20 cursor-pointer"
+								>Blocked (1)</span
+							>
+						</div>
+					</div>
+					<div class="space-y-3">
+						<!-- Task: Blocked -->
+						<div
+							class="bg-surface rounded-lg border border-warning/30 p-4 shadow-sm flex items-start gap-4"
+						>
+							<div class="pt-1">
+								<span class="material-symbols-outlined text-warning text-xl">block</span>
+							</div>
+							<div class="flex-1 min-w-0">
+								<div class="flex items-center gap-2 mb-1">
+									<span class="font-mono text-xs text-muted-text">TSK-401</span>
+									<span
+										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-warning-soft text-warning rounded"
+										>Blocked</span
+									>
+									<span class="text-xs text-muted-text ml-auto font-mono">10 mins ago</span>
+								</div>
+								<h4 class="text-sm font-bold text-primary-text truncate">
+									Implement Detail View UI Component
+								</h4>
+								<p class="text-xs text-muted-text mt-1 truncate">
+									Waiting on DEC-093 (Select layout pattern).
+								</p>
+							</div>
+						</div>
+						<!-- Task: In Progress -->
+						<div
+							class="bg-surface rounded-lg border border-primary-action/30 p-4 shadow-sm flex items-start gap-4"
+						>
+							<div class="pt-1">
+								<span class="material-symbols-outlined text-primary-action text-xl animate-pulse"
+									>autorenew</span
+								>
+							</div>
+							<div class="flex-1 min-w-0">
+								<div class="flex items-center gap-2 mb-1">
+									<span class="font-mono text-xs text-muted-text">TSK-402</span>
+									<span
+										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-primary-soft text-primary-action rounded"
+										>In Progress</span
+									>
+									<span class="text-xs text-muted-text ml-auto font-mono">Just now</span>
+								</div>
+								<h4 class="text-sm font-bold text-primary-text truncate">
+									Parse updated tailwind.config.js
+								</h4>
+								<p class="text-xs text-muted-text mt-1 truncate">
+									Agent is currently analyzing the AST of the config file.
+								</p>
+							</div>
+						</div>
+						<!-- Task: Pending -->
+						<div
+							class="bg-surface rounded-lg border border-border p-4 shadow-sm flex items-start gap-4 opacity-70 hover:opacity-100 transition-opacity"
+						>
+							<div class="pt-1">
+								<span class="material-symbols-outlined text-muted-text text-xl"
+									>radio_button_unchecked</span
+								>
+							</div>
+							<div class="flex-1 min-w-0">
+								<div class="flex items-center gap-2 mb-1">
+									<span class="font-mono text-xs text-muted-text">TSK-403</span>
+									<span
+										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-muted-surface text-muted-text rounded"
+										>Pending</span
+									>
+								</div>
+								<h4 class="text-sm font-bold text-primary-text truncate">
+									Write tests for SideNavBar component
+								</h4>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<!-- Right Detail Panel (Answer Decision) -->
+		<aside
+			class="h-screen w-80 lg:w-96 border-l border-border bg-surface flex flex-col flex-shrink-0 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] z-20"
+		>
+			<!-- Panel Header -->
+			<div class="p-4 border-b border-border flex justify-between items-center bg-decision-soft/30">
+				<div>
+					<h3 class="font-bold text-primary-text text-sm">Answer Decision</h3>
+					<span class="font-mono text-xs text-decision-teal">DEC-092</span>
+				</div>
+				<button
+					class="text-muted-text hover:text-primary-text p-1 rounded hover:bg-muted-surface transition-colors"
+				>
+					<span class="material-symbols-outlined text-sm">close</span>
+				</button>
+			</div>
+			<!-- Panel Body -->
+			<div class="flex-1 overflow-y-auto p-5">
+				<div class="mb-6">
+					<h4 class="text-base font-bold text-primary-text mb-2">
+						Confirm package dependency update strategy
+					</h4>
+					<div
+						class="p-3 bg-muted-surface rounded-lg border border-border text-sm text-primary-text"
+					>
+						<p class="mb-2">
+							The agent suggests updating Tailwind to v3.4. This will require modifying
+							<code class="font-mono text-xs bg-white px-1 rounded">package.json</code> and running
+							<code class="font-mono text-xs bg-white px-1 rounded">npm install</code>.
+						</p>
+						<p>Do you approve this automated update?</p>
+					</div>
+				</div>
+				<form>
+					<!-- Radio Options -->
+					<div class="space-y-3 mb-6">
+						<label
+							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+						>
+							<input
+								checked=""
+								class="mt-0.5 text-decision-teal focus:ring-focus"
+								name="decision_answer"
+								type="radio"
+							/>
+							<div>
+								<span class="block text-sm font-bold text-primary-text">Yes, proceed</span>
+								<span class="block text-xs text-muted-text mt-0.5"
+									>Agent will run npm install automatically.</span
+								>
+							</div>
+						</label>
+						<label
+							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+						>
+							<input
+								class="mt-0.5 text-decision-teal focus:ring-focus"
+								name="decision_answer"
+								type="radio"
+							/>
+							<div>
+								<span class="block text-sm font-bold text-primary-text">No, skip update</span>
+								<span class="block text-xs text-muted-text mt-0.5">Keep current version.</span>
+							</div>
+						</label>
+						<label
+							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+						>
+							<input
+								class="mt-0.5 text-decision-teal focus:ring-focus"
+								name="decision_answer"
+								type="radio"
+							/>
+							<div>
+								<span class="block text-sm font-bold text-primary-text">Custom instruction</span>
+							</div>
+						</label>
+					</div>
+					<!-- Text Area (Optional) -->
+					<div class="mb-6">
+						<label
+							class="block text-xs font-bold text-muted-text uppercase tracking-wider mb-2"
+							for="additional_notes"
+							>Additional context (optional)</label
+						>
+						<textarea
+							class="w-full text-sm rounded-lg border-border focus:border-decision-teal focus:ring focus:ring-decision-teal/20 transition-shadow bg-surface text-primary-text placeholder:text-muted-text/50"
+							id="additional_notes"
+							placeholder="e.g. Ensure no breaking changes to current classes..."
+							rows="3"
+						></textarea>
+					</div>
+				</form>
+			</div>
+			<!-- Panel Footer -->
+			<div class="p-4 border-t border-border bg-muted-surface/50">
+				<div class="flex items-center gap-2 text-xs text-muted-text mb-3">
+					<span class="material-symbols-outlined text-[14px]">edit_document</span>
+					Writing to <code class="font-mono">pending_decisions.yaml</code>
+				</div>
+				<div class="flex gap-3">
+					<button
+						class="flex-1 px-4 py-2 text-sm font-medium text-primary-text bg-surface border border-border rounded-lg hover:bg-muted-surface transition-colors focus:ring-2 focus:ring-focus"
+					>
+						Cancel
+					</button>
+					<button
+						class="flex-1 px-4 py-2 text-sm font-medium text-white bg-decision-teal rounded-lg hover:bg-teal-700 transition-colors focus:ring-2 focus:ring-focus shadow-sm flex justify-center items-center gap-2"
+					>
+						Save answer
+					</button>
+				</div>
+			</div>
+		</aside>
+	</body>
+</html>
