@@ -25,21 +25,21 @@ sudo snap install ./bright-desk_0.0.1_amd64.snap --dangerous
 If the Snap is already installed:
 
 ```sh
-sudo snap refresh ./bright-desk_0.0.1_amd64.snap --dangerous
+sudo snap install --dangerous ./bright-desk_0.0.1_amd64.snap
 ```
 
 ## Configure
 
-The service defaults to `127.0.0.1:3000` and stores workspace data in `$SNAP_COMMON/workspace`.
+The service defaults to `0.0.0.0:3300` and stores workspace data in `$SNAP_COMMON/workspace`.
 
 ```sh
-sudo snap set bright-desk host=127.0.0.1
-sudo snap set bright-desk port=3000
+sudo snap set bright-desk host=0.0.0.0
+sudo snap set bright-desk port=3300
 sudo snap set bright-desk workspace=/var/snap/bright-desk/common/workspace
 sudo snap restart bright-desk
 ```
 
-The MVP does not include authentication. Keep the service bound to localhost, behind a VPN, or behind a trusted reverse proxy.
+The MVP does not include authentication. When binding to `0.0.0.0`, expose the service only on a trusted network, behind a VPN, or behind a trusted reverse proxy.
 
 ## Service Commands
 
@@ -54,5 +54,5 @@ sudo snap restart bright-desk
 1. Repack the Snap.
 2. Install or refresh the Snap locally.
 3. Ensure the `bright-desk` service is active.
-4. Open `http://127.0.0.1:3000` with the Chrome DevTools MCP server.
+4. Open `http://127.0.0.1:3300` with the Chrome DevTools MCP server.
 5. Verify that the Bright Desk shell renders and the visible UI matches the current feature being validated.
