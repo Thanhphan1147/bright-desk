@@ -63,33 +63,28 @@ The product should not feel:
 | `--color-danger-soft`   | `#fdebea` | Error chip or alert background.                |
 | `--color-focus`         | `#ffb703` | Keyboard focus ring.                           |
 
-### CSS Variable Baseline
+### Tailwind Token Baseline
+
+Bright Desk uses Tailwind CSS as the implementation styling framework. Design tokens from this document should be mapped into Tailwind v4 theme tokens in `src/app.css`.
 
 ```css
-:root {
-	--color-bg: #fbfaf7;
+@theme {
+	--color-paper: #fbfaf7;
 	--color-surface: #ffffff;
 	--color-surface-muted: #f3f1eb;
 	--color-border: #dedbd2;
-
-	--color-text: #1f2523;
-	--color-text-muted: #66706b;
-
+	--color-ink: #1f2523;
+	--color-muted: #66706b;
 	--color-primary: #246bfe;
 	--color-primary-soft: #e8efff;
-
 	--color-decision: #0f8b8d;
 	--color-decision-soft: #e4f6f6;
-
 	--color-success: #168a5b;
 	--color-success-soft: #e8f6ef;
-
 	--color-warning: #b7791f;
 	--color-warning-soft: #fff4d8;
-
 	--color-danger: #c2413a;
 	--color-danger-soft: #fdebea;
-
 	--color-focus: #ffb703;
 }
 ```
@@ -387,10 +382,8 @@ Avoid:
 ## Implementation Tokens
 
 ```css
-:root {
-	color-scheme: light;
-
-	--font-ui:
+@theme {
+	--font-sans:
 		'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', 'Source Sans 3', system-ui, sans-serif;
 	--font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
 
@@ -411,6 +404,7 @@ Avoid:
 The following decisions are settled for the MVP:
 
 - Use a bright light theme.
+- Use Tailwind CSS utilities for implementation styling.
 - Use a warm off-white app background.
 - Use white cards and subtle borders.
 - Use a left sidebar for project navigation unless project count is guaranteed to remain very small.

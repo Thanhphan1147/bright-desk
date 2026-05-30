@@ -91,34 +91,34 @@
 		</style>
 	</head>
 	<body
-		class="paper-bg h-screen overflow-hidden flex selection:bg-primary-soft selection:text-primary-action"
+		class="paper-bg selection:text-primary-action flex h-screen overflow-hidden selection:bg-primary-soft"
 	>
 		<!-- Left Sidebar (SideNavBar Concept) -->
 		<nav
-			class="h-screen w-64 border-r border-border bg-muted-surface flex flex-col p-4 flex-shrink-0 z-10 transition-transform duration-300"
+			class="bg-muted-surface z-10 flex h-screen w-64 flex-shrink-0 flex-col border-r border-border p-4 transition-transform duration-300"
 		>
 			<div class="mb-8">
-				<h1 class="text-xl font-headline font-bold text-primary-text flex items-center gap-2">
+				<h1 class="font-headline text-primary-text flex items-center gap-2 text-xl font-bold">
 					<span class="material-symbols-outlined text-decision-teal">bolt</span>
 					Bright Desk
 				</h1>
-				<p class="text-sm text-muted-text mt-1">Agent workspace</p>
+				<p class="text-muted-text mt-1 text-sm">Agent workspace</p>
 			</div>
 			<div class="mb-4">
-				<h2 class="text-xs font-bold text-muted-text uppercase tracking-wider mb-2 px-2">
+				<h2 class="text-muted-text mb-2 px-2 text-xs font-bold tracking-wider uppercase">
 					Projects
 				</h2>
 				<ul class="space-y-1">
 					<!-- Active Project -->
 					<li>
 						<a
-							class="flex items-center gap-3 px-3 py-2 text-primary-text font-bold bg-surface rounded-lg shadow-sm border border-border/50 group transition-colors duration-200"
+							class="text-primary-text group flex items-center gap-3 rounded-lg border border-border/50 bg-surface px-3 py-2 font-bold shadow-sm transition-colors duration-200"
 							href="#"
 						>
 							<span class="material-symbols-outlined text-decision-teal">folder_open</span>
 							<span class="flex-grow text-sm">Workspace UI</span>
 							<span
-								class="text-xs bg-decision-soft text-decision-teal px-1.5 py-0.5 rounded font-mono"
+								class="text-decision-teal rounded bg-decision-soft px-1.5 py-0.5 font-mono text-xs"
 								>2</span
 							>
 						</a>
@@ -126,12 +126,12 @@
 					<!-- Inactive Project -->
 					<li>
 						<a
-							class="flex items-center gap-3 px-3 py-2 text-muted-text hover:text-primary-text hover:bg-surface rounded-lg group transition-colors duration-200"
+							class="text-muted-text hover:text-primary-text group flex items-center gap-3 rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-surface"
 							href="#"
 						>
 							<span class="material-symbols-outlined">package_2</span>
 							<span class="flex-grow text-sm">Snap Packaging</span>
-							<span class="text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded font-mono"
+							<span class="rounded bg-warning-soft px-1.5 py-0.5 font-mono text-xs text-warning"
 								>!</span
 							>
 						</a>
@@ -139,7 +139,7 @@
 					<!-- Inactive Project -->
 					<li>
 						<a
-							class="flex items-center gap-3 px-3 py-2 text-muted-text hover:text-primary-text hover:bg-surface rounded-lg group transition-colors duration-200"
+							class="text-muted-text hover:text-primary-text group flex items-center gap-3 rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-surface"
 							href="#"
 						>
 							<span class="material-symbols-outlined">schedule</span>
@@ -150,7 +150,7 @@
 			</div>
 			<div class="mt-auto">
 				<button
-					class="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-primary-action border border-primary-action rounded-lg hover:bg-primary-soft transition-colors focus:ring-2 focus:ring-focus focus:outline-none"
+					class="text-primary-action border-primary-action flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-colors hover:bg-primary-soft focus:ring-2 focus:ring-focus focus:outline-none"
 				>
 					<span class="material-symbols-outlined text-sm">add</span>
 					Add project
@@ -158,22 +158,22 @@
 			</div>
 		</nav>
 		<!-- Main Content Area -->
-		<main class="flex-1 flex flex-col h-full overflow-hidden bg-background">
+		<main class="bg-background flex h-full flex-1 flex-col overflow-hidden">
 			<!-- TopNavBar Concept -->
 			<header
-				class="flex justify-between items-center px-6 py-4 w-full bg-surface border-b border-border z-10 flex-shrink-0"
+				class="z-10 flex w-full flex-shrink-0 items-center justify-between border-b border-border bg-surface px-6 py-4"
 			>
 				<div>
-					<h2 class="font-headline font-bold text-xl text-primary-text flex items-center gap-2">
+					<h2 class="font-headline text-primary-text flex items-center gap-2 text-xl font-bold">
 						Workspace UI
 					</h2>
-					<p class="text-sm text-muted-text mt-0.5">
+					<p class="text-muted-text mt-0.5 text-sm">
 						Manage task files and human decisions for the local workspace.
 					</p>
-					<div class="flex items-center gap-2 mt-1">
-						<span class="material-symbols-outlined text-[14px] text-muted-text">link</span
+					<div class="mt-1 flex items-center gap-2">
+						<span class="material-symbols-outlined text-muted-text text-[14px]">link</span
 						><a
-							class="text-xs font-mono text-muted-text hover:text-primary-action transition-colors"
+							class="text-muted-text hover:text-primary-action font-mono text-xs transition-colors"
 							href="https://github.com/brightdesk/workspace-ui"
 							>github.com/brightdesk/workspace-ui</a
 						>
@@ -181,47 +181,47 @@
 				</div>
 				<div class="flex items-center gap-4">
 					<!-- Metadata Chips -->
-					<div class="hidden lg:flex items-center gap-2 mr-4">
+					<div class="mr-4 hidden items-center gap-2 lg:flex">
 						<span
-							class="px-2 py-1 text-xs font-mono bg-decision-soft text-decision-teal rounded border border-decision-teal/20"
+							class="text-decision-teal border-decision-teal/20 rounded border bg-decision-soft px-2 py-1 font-mono text-xs"
 							>2 pending decisions</span
 						>
 						<span
-							class="px-2 py-1 text-xs font-mono bg-muted-surface text-primary-text rounded border border-border"
+							class="bg-muted-surface text-primary-text rounded border border-border px-2 py-1 font-mono text-xs"
 							>5 active tasks</span
 						>
 						<span
-							class="px-2 py-1 text-xs font-mono bg-danger-soft text-danger rounded border border-danger/20"
+							class="rounded border border-danger/20 bg-danger-soft px-2 py-1 font-mono text-xs text-danger"
 							>1 blocked</span
 						>
 					</div>
 					<!-- Navigation Links (Contextual to project) -->
-					<nav class="hidden md:flex items-center gap-6 mr-6">
+					<nav class="mr-6 hidden items-center gap-6 md:flex">
 						<a
-							class="text-sm font-medium text-decision-teal border-b-2 border-decision-teal pb-1"
+							class="text-decision-teal border-decision-teal border-b-2 pb-1 text-sm font-medium"
 							href="#"
 							>Decisions</a
 						>
 						<a
-							class="text-sm font-medium text-muted-text hover:text-primary-action transition-all pb-1 border-b-2 border-transparent"
+							class="text-muted-text hover:text-primary-action border-b-2 border-transparent pb-1 text-sm font-medium transition-all"
 							href="#"
 							>Tasks</a
 						>
 						<a
-							class="text-sm font-medium text-muted-text hover:text-primary-action transition-all pb-1 border-b-2 border-transparent"
+							class="text-muted-text hover:text-primary-action border-b-2 border-transparent pb-1 text-sm font-medium transition-all"
 							href="#"
 							>Files</a
 						>
 					</nav>
 					<!-- Actions -->
 					<button
-						class="text-muted-text hover:text-primary-action p-2 rounded-full hover:bg-primary-soft transition-colors"
+						class="text-muted-text hover:text-primary-action rounded-full p-2 transition-colors hover:bg-primary-soft"
 						title="Refresh"
 					>
 						<span class="material-symbols-outlined">refresh</span>
 					</button>
 					<button
-						class="flex items-center gap-2 bg-primary-action text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+						class="bg-primary-action flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700"
 					>
 						<span class="material-symbols-outlined text-sm">add</span>
 						Add Task
@@ -229,62 +229,62 @@
 				</div>
 			</header>
 			<!-- Scrollable Canvas -->
-			<div class="flex-1 overflow-y-auto p-6 relative">
+			<div class="relative flex-1 overflow-y-auto p-6">
 				<!-- Alert Banner -->
 				<div
-					class="mb-6 bg-warning-soft border border-warning/30 rounded-lg p-3 flex items-start gap-3 shadow-sm"
+					class="mb-6 flex items-start gap-3 rounded-lg border border-warning/30 bg-warning-soft p-3 shadow-sm"
 					role="alert"
 				>
-					<span class="material-symbols-outlined text-warning mt-0.5">sync_problem</span>
+					<span class="material-symbols-outlined mt-0.5 text-warning">sync_problem</span>
 					<div>
-						<h3 class="text-sm font-bold text-primary-text">File changed on disk</h3>
-						<p class="text-sm text-muted-text mt-0.5">
+						<h3 class="text-primary-text text-sm font-bold">File changed on disk</h3>
+						<p class="text-muted-text mt-0.5 text-sm">
 							Another process modified
-							<code class="font-mono text-xs bg-white px-1 rounded border border-border"
+							<code class="rounded border border-border bg-white px-1 font-mono text-xs"
 								>pending_decisions.yaml</code
 							>. Refresh before saving to avoid conflicts.
 						</p>
 					</div>
 					<button
-						class="ml-auto text-sm font-medium text-warning hover:text-warning/80 underline mt-0.5"
+						class="mt-0.5 ml-auto text-sm font-medium text-warning underline hover:text-warning/80"
 					>
 						Refresh project
 					</button>
 				</div>
 				<!-- Decisions Section -->
 				<section class="mb-10">
-					<h3 class="text-lg font-bold text-primary-text mb-4 flex items-center gap-2">
+					<h3 class="text-primary-text mb-4 flex items-center gap-2 text-lg font-bold">
 						<span class="material-symbols-outlined text-decision-teal">psychology</span>
 						Pending Decisions
 					</h3>
-					<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+					<div class="grid grid-cols-1 gap-4 xl:grid-cols-2">
 						<!-- Decision Card 1 -->
 						<div
-							class="bg-surface rounded-xl border border-decision-teal/30 p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+							class="border-decision-teal/30 group relative overflow-hidden rounded-xl border bg-surface p-5 shadow-sm transition-shadow hover:shadow-md"
 						>
-							<div class="absolute top-0 left-0 w-1 h-full bg-decision-teal"></div>
-							<div class="flex justify-between items-start mb-3">
-								<span class="font-mono text-xs text-muted-text">ID: DEC-092</span>
+							<div class="bg-decision-teal absolute top-0 left-0 h-full w-1"></div>
+							<div class="mb-3 flex items-start justify-between">
+								<span class="text-muted-text font-mono text-xs">ID: DEC-092</span>
 								<span
-									class="px-2 py-0.5 text-xs font-medium bg-decision-soft text-decision-teal rounded-full border border-decision-teal/20"
+									class="text-decision-teal border-decision-teal/20 rounded-full border bg-decision-soft px-2 py-0.5 text-xs font-medium"
 									>High Priority</span
 								>
 							</div>
-							<h4 class="text-base font-bold text-primary-text mb-2">
+							<h4 class="text-primary-text mb-2 text-base font-bold">
 								Confirm package dependency update strategy
 							</h4>
-							<p class="text-sm text-muted-text mb-4 line-clamp-2">
+							<p class="text-muted-text mb-4 line-clamp-2 text-sm">
 								The agent suggests updating Tailwind to v3.4. This will require modifying
 								`package.json` and running `npm install`. Do you approve this automated update?
 							</p>
-							<div class="flex items-center gap-3 mt-4">
+							<div class="mt-4 flex items-center gap-3">
 								<button
-									class="flex-1 bg-decision-teal text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-teal-700 transition-colors"
+									class="bg-decision-teal flex-1 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-700"
 								>
 									Answer decision
 								</button>
 								<button
-									class="p-2 text-muted-text border border-border rounded-lg hover:bg-muted-surface transition-colors"
+									class="text-muted-text hover:bg-muted-surface rounded-lg border border-border p-2 transition-colors"
 									title="View associated files"
 								>
 									<span class="material-symbols-outlined text-sm">description</span>
@@ -293,26 +293,26 @@
 						</div>
 						<!-- Decision Card 2 -->
 						<div
-							class="bg-surface rounded-xl border border-decision-teal/30 p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+							class="border-decision-teal/30 group relative overflow-hidden rounded-xl border bg-surface p-5 shadow-sm transition-shadow hover:shadow-md"
 						>
-							<div class="absolute top-0 left-0 w-1 h-full bg-decision-teal"></div>
-							<div class="flex justify-between items-start mb-3">
-								<span class="font-mono text-xs text-muted-text">ID: DEC-093</span>
+							<div class="bg-decision-teal absolute top-0 left-0 h-full w-1"></div>
+							<div class="mb-3 flex items-start justify-between">
+								<span class="text-muted-text font-mono text-xs">ID: DEC-093</span>
 								<span
-									class="px-2 py-0.5 text-xs font-medium bg-muted-surface text-muted-text rounded-full border border-border"
+									class="bg-muted-surface text-muted-text rounded-full border border-border px-2 py-0.5 text-xs font-medium"
 									>Normal</span
 								>
 							</div>
-							<h4 class="text-base font-bold text-primary-text mb-2">
+							<h4 class="text-primary-text mb-2 text-base font-bold">
 								Select layout pattern for detail view
 							</h4>
-							<p class="text-sm text-muted-text mb-4 line-clamp-2">
+							<p class="text-muted-text mb-4 line-clamp-2 text-sm">
 								Should the detail view open as a right-side panel (drawer) or a central modal? The
 								agent is blocked on implementing the UI components until this is resolved.
 							</p>
-							<div class="flex items-center gap-3 mt-4">
+							<div class="mt-4 flex items-center gap-3">
 								<button
-									class="flex-1 bg-decision-soft text-decision-teal border border-decision-teal/30 py-2 px-4 rounded-lg text-sm font-medium hover:bg-decision-teal hover:text-white transition-colors"
+									class="text-decision-teal border-decision-teal/30 hover:bg-decision-teal flex-1 rounded-lg border bg-decision-soft px-4 py-2 text-sm font-medium transition-colors hover:text-white"
 								>
 									Review options
 								</button>
@@ -322,18 +322,18 @@
 				</section>
 				<!-- Tasks Section -->
 				<section>
-					<div class="flex justify-between items-center mb-4">
-						<h3 class="text-lg font-bold text-primary-text flex items-center gap-2">
+					<div class="mb-4 flex items-center justify-between">
+						<h3 class="text-primary-text flex items-center gap-2 text-lg font-bold">
 							<span class="material-symbols-outlined text-muted-text">checklist</span>
 							Active Tasks
 						</h3>
 						<div class="flex gap-2">
 							<span
-								class="px-2 py-1 text-xs font-mono bg-surface rounded border border-border cursor-pointer hover:bg-muted-surface"
+								class="hover:bg-muted-surface cursor-pointer rounded border border-border bg-surface px-2 py-1 font-mono text-xs"
 								>All</span
 							>
 							<span
-								class="px-2 py-1 text-xs font-mono bg-warning-soft text-warning rounded border border-warning/20 cursor-pointer"
+								class="cursor-pointer rounded border border-warning/20 bg-warning-soft px-2 py-1 font-mono text-xs text-warning"
 								>Blocked (1)</span
 							>
 						</div>
@@ -341,81 +341,81 @@
 					<div class="space-y-3">
 						<!-- Task: Blocked -->
 						<div
-							class="bg-surface rounded-lg border border-warning/30 p-4 shadow-sm flex items-start gap-4"
+							class="flex items-start gap-4 rounded-lg border border-warning/30 bg-surface p-4 shadow-sm"
 						>
 							<div class="pt-1">
-								<span class="material-symbols-outlined text-warning text-xl">block</span>
+								<span class="material-symbols-outlined text-xl text-warning">block</span>
 							</div>
-							<div class="flex-1 min-w-0">
-								<div class="flex items-center gap-2 mb-1">
-									<span class="font-mono text-xs text-muted-text">TSK-401</span>
+							<div class="min-w-0 flex-1">
+								<div class="mb-1 flex items-center gap-2">
+									<span class="text-muted-text font-mono text-xs">TSK-401</span>
 									<span
-										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-warning-soft text-warning rounded"
+										class="rounded bg-warning-soft px-2 py-0.5 text-[10px] font-bold tracking-wider text-warning uppercase"
 										>Blocked</span
 									>
-									<span class="text-xs text-muted-text ml-auto font-mono">10 mins ago</span>
+									<span class="text-muted-text ml-auto font-mono text-xs">10 mins ago</span>
 								</div>
-								<h4 class="text-sm font-bold text-primary-text truncate">
+								<h4 class="text-primary-text truncate text-sm font-bold">
 									Implement Detail View UI Component
 								</h4>
-								<div class="font-mono text-[10px] text-muted-text mt-0.5 opacity-80">
+								<div class="text-muted-text mt-0.5 font-mono text-[10px] opacity-80">
 									agent/task-401-implement-detail-view
 								</div>
-								<p class="text-xs text-muted-text mt-1 truncate">
+								<p class="text-muted-text mt-1 truncate text-xs">
 									Waiting on DEC-093 (Select layout pattern).
 								</p>
 							</div>
 						</div>
 						<!-- Task: In Progress -->
 						<div
-							class="bg-surface rounded-lg border border-primary-action/30 p-4 shadow-sm flex items-start gap-4"
+							class="border-primary-action/30 flex items-start gap-4 rounded-lg border bg-surface p-4 shadow-sm"
 						>
 							<div class="pt-1">
-								<span class="material-symbols-outlined text-primary-action text-xl animate-pulse"
+								<span class="material-symbols-outlined text-primary-action animate-pulse text-xl"
 									>autorenew</span
 								>
 							</div>
-							<div class="flex-1 min-w-0">
-								<div class="flex items-center gap-2 mb-1">
-									<span class="font-mono text-xs text-muted-text">TSK-402</span>
+							<div class="min-w-0 flex-1">
+								<div class="mb-1 flex items-center gap-2">
+									<span class="text-muted-text font-mono text-xs">TSK-402</span>
 									<span
-										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-primary-soft text-primary-action rounded"
+										class="text-primary-action rounded bg-primary-soft px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase"
 										>In Progress</span
 									>
-									<span class="text-xs text-muted-text ml-auto font-mono">Just now</span>
+									<span class="text-muted-text ml-auto font-mono text-xs">Just now</span>
 								</div>
-								<h4 class="text-sm font-bold text-primary-text truncate">
+								<h4 class="text-primary-text truncate text-sm font-bold">
 									Parse updated tailwind.config.js
 								</h4>
-								<div class="font-mono text-[10px] text-muted-text mt-0.5 opacity-80">
+								<div class="text-muted-text mt-0.5 font-mono text-[10px] opacity-80">
 									agent/task-402-parse-tailwind-config
 								</div>
-								<p class="text-xs text-muted-text mt-1 truncate">
+								<p class="text-muted-text mt-1 truncate text-xs">
 									Agent is currently analyzing the AST of the config file.
 								</p>
 							</div>
 						</div>
 						<!-- Task: Pending -->
 						<div
-							class="bg-surface rounded-lg border border-border p-4 shadow-sm flex items-start gap-4 opacity-70 hover:opacity-100 transition-opacity"
+							class="flex items-start gap-4 rounded-lg border border-border bg-surface p-4 opacity-70 shadow-sm transition-opacity hover:opacity-100"
 						>
 							<div class="pt-1">
 								<span class="material-symbols-outlined text-muted-text text-xl"
 									>radio_button_unchecked</span
 								>
 							</div>
-							<div class="flex-1 min-w-0">
-								<div class="flex items-center gap-2 mb-1">
-									<span class="font-mono text-xs text-muted-text">TSK-403</span>
+							<div class="min-w-0 flex-1">
+								<div class="mb-1 flex items-center gap-2">
+									<span class="text-muted-text font-mono text-xs">TSK-403</span>
 									<span
-										class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-muted-surface text-muted-text rounded"
+										class="bg-muted-surface text-muted-text rounded px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase"
 										>Pending</span
 									>
 								</div>
-								<h4 class="text-sm font-bold text-primary-text truncate">
+								<h4 class="text-primary-text truncate text-sm font-bold">
 									Write tests for SideNavBar component
 								</h4>
-								<div class="font-mono text-[10px] text-muted-text mt-0.5 opacity-80">
+								<div class="text-muted-text mt-0.5 font-mono text-[10px] opacity-80">
 									agent/task-403-write-sidenav-tests
 								</div>
 							</div>
@@ -426,16 +426,16 @@
 		</main>
 		<!-- Right Detail Panel (Answer Decision) -->
 		<aside
-			class="h-screen w-80 lg:w-96 border-l border-border bg-surface flex flex-col flex-shrink-0 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] z-20"
+			class="z-20 flex h-screen w-80 flex-shrink-0 flex-col border-l border-border bg-surface shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] lg:w-96"
 		>
 			<!-- Panel Header -->
-			<div class="p-4 border-b border-border flex justify-between items-center bg-decision-soft/30">
+			<div class="flex items-center justify-between border-b border-border bg-decision-soft/30 p-4">
 				<div>
-					<h3 class="font-bold text-primary-text text-sm">Answer Decision</h3>
-					<span class="font-mono text-xs text-decision-teal">DEC-092</span>
+					<h3 class="text-primary-text text-sm font-bold">Answer Decision</h3>
+					<span class="text-decision-teal font-mono text-xs">DEC-092</span>
 				</div>
 				<button
-					class="text-muted-text hover:text-primary-text p-1 rounded hover:bg-muted-surface transition-colors"
+					class="text-muted-text hover:text-primary-text hover:bg-muted-surface rounded p-1 transition-colors"
 				>
 					<span class="material-symbols-outlined text-sm">close</span>
 				</button>
@@ -443,109 +443,109 @@
 			<!-- Panel Body -->
 			<div class="flex-1 overflow-y-auto p-5">
 				<div class="mb-6">
-					<h4 class="text-base font-bold text-primary-text mb-2">
+					<h4 class="text-primary-text mb-2 text-base font-bold">
 						Confirm package dependency update strategy
 					</h4>
 					<div
-						class="p-3 bg-muted-surface rounded-lg border border-border text-sm text-primary-text"
+						class="bg-muted-surface text-primary-text rounded-lg border border-border p-3 text-sm"
 					>
 						<p class="mb-2">
 							The agent suggests updating Tailwind to v3.4. This will require modifying
-							<code class="font-mono text-xs bg-white px-1 rounded">package.json</code> and running
-							<code class="font-mono text-xs bg-white px-1 rounded">npm install</code>.
+							<code class="rounded bg-white px-1 font-mono text-xs">package.json</code> and running
+							<code class="rounded bg-white px-1 font-mono text-xs">npm install</code>.
 						</p>
 						<p>Do you approve this automated update?</p>
 					</div>
 				</div>
-				<div class="mb-6 px-3 py-2 bg-muted-surface/50 border border-border/50 rounded-lg">
-					<label class="block text-[10px] font-bold text-muted-text uppercase tracking-wider mb-1"
+				<div class="bg-muted-surface/50 mb-6 rounded-lg border border-border/50 px-3 py-2">
+					<label class="text-muted-text mb-1 block text-[10px] font-bold tracking-wider uppercase"
 						>Checkout Directory</label
 					>
-					<div class="font-mono text-[11px] text-muted-text truncate select-all">
+					<div class="text-muted-text truncate font-mono text-[11px] select-all">
 						checkouts/task-401--agent-task-401-implement-detail-view
 					</div>
 				</div>
 				<form>
 					<!-- Radio Options -->
-					<div class="space-y-3 mb-6">
+					<div class="mb-6 space-y-3">
 						<label
-							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+							class="hover:border-decision-teal flex cursor-pointer items-start gap-3 rounded-lg border border-border p-3 transition-colors focus-within:ring-2 focus-within:ring-focus hover:bg-decision-soft/20"
 						>
 							<input
 								checked=""
-								class="mt-0.5 text-decision-teal focus:ring-focus"
+								class="text-decision-teal mt-0.5 focus:ring-focus"
 								name="decision_answer"
 								type="radio"
 							/>
 							<div>
-								<span class="block text-sm font-bold text-primary-text">Yes, proceed</span>
-								<span class="block text-xs text-muted-text mt-0.5"
+								<span class="text-primary-text block text-sm font-bold">Yes, proceed</span>
+								<span class="text-muted-text mt-0.5 block text-xs"
 									>Agent will run npm install automatically.</span
 								>
 							</div>
 						</label>
 						<label
-							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+							class="hover:border-decision-teal flex cursor-pointer items-start gap-3 rounded-lg border border-border p-3 transition-colors focus-within:ring-2 focus-within:ring-focus hover:bg-decision-soft/20"
 						>
 							<input
-								class="mt-0.5 text-decision-teal focus:ring-focus"
+								class="text-decision-teal mt-0.5 focus:ring-focus"
 								name="decision_answer"
 								type="radio"
 							/>
 							<div>
-								<span class="block text-sm font-bold text-primary-text">No, skip update</span>
-								<span class="block text-xs text-muted-text mt-0.5">Keep current version.</span>
+								<span class="text-primary-text block text-sm font-bold">No, skip update</span>
+								<span class="text-muted-text mt-0.5 block text-xs">Keep current version.</span>
 							</div>
 						</label>
 						<label
-							class="flex items-start gap-3 p-3 border border-border rounded-lg cursor-pointer hover:border-decision-teal hover:bg-decision-soft/20 transition-colors focus-within:ring-2 focus-within:ring-focus"
+							class="hover:border-decision-teal flex cursor-pointer items-start gap-3 rounded-lg border border-border p-3 transition-colors focus-within:ring-2 focus-within:ring-focus hover:bg-decision-soft/20"
 						>
 							<input
-								class="mt-0.5 text-decision-teal focus:ring-focus"
+								class="text-decision-teal mt-0.5 focus:ring-focus"
 								name="decision_answer"
 								type="radio"
 							/>
 							<div>
-								<span class="block text-sm font-bold text-primary-text">Custom instruction</span>
+								<span class="text-primary-text block text-sm font-bold">Custom instruction</span>
 							</div>
 						</label>
 					</div>
-					<div class="mb-6 px-3 py-2 bg-muted-surface/50 border border-border/50 rounded-lg">
-						<label class="block text-[10px] font-bold text-muted-text uppercase tracking-wider mb-1"
+					<div class="bg-muted-surface/50 mb-6 rounded-lg border border-border/50 px-3 py-2">
+						<label class="text-muted-text mb-1 block text-[10px] font-bold tracking-wider uppercase"
 							>Checkout Directory</label
 						>
-						<div class="font-mono text-[11px] text-muted-text truncate select-all">
+						<div class="text-muted-text truncate font-mono text-[11px] select-all">
 							checkouts/task-401--agent-task-401-implement-detail-view
 						</div>
 					</div>
 					<!-- Text Area (Optional) -->
 					<div class="mb-6">
-						<label class="block text-xs font-bold text-muted-text uppercase tracking-wider mb-2"
+						<label class="text-muted-text mb-2 block text-xs font-bold tracking-wider uppercase"
 							>Git branch</label
 						>
 						<div class="relative">
 							<span
-								class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-text text-sm"
+								class="material-symbols-outlined text-muted-text absolute top-1/2 left-3 -translate-y-1/2 text-sm"
 								>account_tree</span
 							><input
-								class="w-full text-sm rounded-lg border-border pl-10 focus:border-decision-teal focus:ring focus:ring-decision-teal/20 bg-muted-surface font-mono"
+								class="focus:border-decision-teal focus:ring-decision-teal/20 bg-muted-surface w-full rounded-lg border-border pl-10 font-mono text-sm focus:ring"
 								readonly=""
 								type="text"
 								value="agent/dec-092-update-tailwind"
 							/>
 						</div>
-						<p class="text-[10px] text-muted-text mt-1.5">
+						<p class="text-muted-text mt-1.5 text-[10px]">
 							Agents will check out the project repository on this branch.
 						</p>
 					</div>
 					<div class="mb-6">
 						<label
-							class="block text-xs font-bold text-muted-text uppercase tracking-wider mb-2"
+							class="text-muted-text mb-2 block text-xs font-bold tracking-wider uppercase"
 							for="additional_notes"
 							>Additional context (optional)</label
 						>
 						<textarea
-							class="w-full text-sm rounded-lg border-border focus:border-decision-teal focus:ring focus:ring-decision-teal/20 transition-shadow bg-surface text-primary-text placeholder:text-muted-text/50"
+							class="focus:border-decision-teal focus:ring-decision-teal/20 text-primary-text placeholder:text-muted-text/50 w-full rounded-lg border-border bg-surface text-sm transition-shadow focus:ring"
 							id="additional_notes"
 							placeholder="e.g. Ensure no breaking changes to current classes..."
 							rows="3"
@@ -554,19 +554,19 @@
 				</form>
 			</div>
 			<!-- Panel Footer -->
-			<div class="p-4 border-t border-border bg-muted-surface/50">
-				<div class="flex items-center gap-2 text-xs text-muted-text mb-3">
+			<div class="bg-muted-surface/50 border-t border-border p-4">
+				<div class="text-muted-text mb-3 flex items-center gap-2 text-xs">
 					<span class="material-symbols-outlined text-[14px]">edit_document</span>
 					Writing to <code class="font-mono">pending_decisions.yaml</code>
 				</div>
 				<div class="flex gap-3">
 					<button
-						class="flex-1 px-4 py-2 text-sm font-medium text-primary-text bg-surface border border-border rounded-lg hover:bg-muted-surface transition-colors focus:ring-2 focus:ring-focus"
+						class="text-primary-text hover:bg-muted-surface flex-1 rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors focus:ring-2 focus:ring-focus"
 					>
 						Cancel
 					</button>
 					<button
-						class="flex-1 px-4 py-2 text-sm font-medium text-white bg-decision-teal rounded-lg hover:bg-teal-700 transition-colors focus:ring-2 focus:ring-focus shadow-sm flex justify-center items-center gap-2"
+						class="bg-decision-teal flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-teal-700 focus:ring-2 focus:ring-focus"
 					>
 						Save answer
 					</button>

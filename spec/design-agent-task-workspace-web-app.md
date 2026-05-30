@@ -192,6 +192,7 @@ The application shall be implemented as a SvelteKit web application packaged as 
 ### Recommended Architecture Pattern
 
 - **PAT-001**: Use SvelteKit for the browser UI and server-side request handlers.
+- **PAT-001A**: Use Tailwind CSS utilities as the primary styling framework, with Bright Desk design tokens centralized in the global stylesheet.
 - **PAT-002**: Use a workspace service responsible for project discovery and path safety.
 - **PAT-003**: Use a YAML repository service responsible for parse, validate, update, and atomic write operations.
 - **PAT-004**: Use schema validation for every read and write boundary.
@@ -518,7 +519,7 @@ Write operations shall include the last observed version metadata for the file b
 
 The application is intentionally file-based because the workspace files are meant to be readable and editable by humans and AI agents. YAML is selected for structured task and decision state because it supports readable multiline text and is more comfortable for human review than JSON. Markdown is selected for long-form context and instructions because it is readable, diffable, and suitable for natural-language guidance.
 
-SvelteKit is selected because it provides a productive browser UI framework and server-side request handling in one application. This is appropriate for a headless server deployment where the browser is the only client.
+SvelteKit is selected because it provides a productive browser UI framework and server-side request handling in one application. This is appropriate for a headless server deployment where the browser is the only client. Tailwind CSS is selected as the implementation styling framework so the Stitch reference design and Bright Desk design tokens can be translated into consistent utility classes while keeping custom CSS minimal.
 
 Snap strict confinement is accepted as a constraint. This requires the workspace to live in a Snap-accessible location or use explicitly connected Snap interfaces. The MVP shall not require classic confinement.
 
@@ -556,6 +557,7 @@ Task branch and checkout metadata are included in the MVP file contracts even th
 
 - **PLT-001**: Node.js runtime compatible with the selected SvelteKit adapter.
 - **PLT-002**: SvelteKit web application framework.
+- **PLT-002A**: Tailwind CSS styling framework.
 - **PLT-003**: YAML parser and stringifier that can preserve object data without converting multiline text to unreadable formats.
 - **PLT-004**: Schema validation library for runtime validation of YAML-derived data.
 - **PLT-005**: File watching capability for detecting external workspace changes.

@@ -54,6 +54,7 @@ The E2E validation should exercise the feature changed by the task and confirm t
 ## UI and Design Requirements
 
 - Follow the Bright Desk design system in `DESIGN.md`.
+- Use Tailwind CSS utilities for UI implementation and keep design tokens centralized in `src/app.css`.
 - Keep the interface bright, minimal, calm, and precise.
 - Pending decisions appear before tasks.
 - Task cards show Git branch metadata.

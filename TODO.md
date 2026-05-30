@@ -6,7 +6,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 - [ ] Create the SvelteKit application scaffold.
 - [ ] Configure TypeScript, formatting, linting, and test scripts using the default project conventions.
-- [ ] Add the Bright Desk design tokens from `DESIGN.md`.
+- [ ] Add Tailwind CSS and the Bright Desk design tokens from `DESIGN.md`.
 - [ ] Add a minimal app shell with sidebar, main content area, and right-side detail panel placeholder.
 - [ ] Add a local development command that starts the browser UI.
 

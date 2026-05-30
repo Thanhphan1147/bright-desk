@@ -2,6 +2,8 @@
 
 Bright Desk is a minimal SvelteKit web application for managing AI-agent task workspaces from a browser. The MVP focuses on project discovery, YAML-backed tasks, pending human decisions, and task Git branch metadata.
 
+The UI is implemented with Tailwind CSS using the Bright Desk tokens defined in `DESIGN.md` and mapped in `src/app.css`.
+
 ## Development
 
 Install dependencies:
