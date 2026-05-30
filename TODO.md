@@ -12,7 +12,19 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the app runs locally and shows the Bright Desk shell with static placeholder content.
 
-## Step 1 - Workspace Configuration
+## Step 1 - Snap Packaging
+
+- [ ] Add Snap packaging configuration.
+- [ ] Package the SvelteKit app as a service suitable for a headless server.
+- [ ] Use strict confinement.
+- [ ] Document supported workspace locations under strict confinement.
+- [ ] Expose Snap configuration for workspace path, host, and port.
+- [ ] Document that MVP authentication is not included and network access must be restricted externally.
+- [ ] Add a repeatable packaged E2E validation flow using the Snap and Chrome DevTools MCP.
+
+**Done when:** the app can be installed and run as a strictly confined Snap, and the static Bright Desk shell can be verified through the packaged deployment.
+
+## Step 2 - Workspace Configuration
 
 - [ ] Add server-side configuration for the workspace path.
 - [ ] Support configuration through environment variable first.
@@ -22,7 +34,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the app can start against a configured workspace directory and safely refuses invalid paths.
 
-## Step 2 - YAML Schemas and File Repository
+## Step 3 - YAML Schemas and File Repository
 
 - [ ] Define runtime schemas for `project.yaml`.
 - [ ] Define runtime schemas for `tasks.yaml`.
@@ -35,7 +47,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** tests can read, validate, update, and atomically write representative project YAML files without losing unknown fields.
 
-## Step 3 - Project Discovery and Project Creation
+## Step 4 - Project Discovery and Project Creation
 
 - [ ] Discover immediate child directories of the workspace as projects.
 - [ ] Recognize projects containing `project.yaml`, `tasks.yaml`, `pending_decisions.yaml`, `completed_tasks.yaml`, or `context/`.
@@ -49,7 +61,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the UI can create and list a project linked to a GitHub repository.
 
-## Step 4 - Self-Hosting Workspace Seed
+## Step 5 - Self-Hosting Workspace Seed
 
 - [ ] Create a workspace project entry for Bright Desk itself.
 - [ ] Set the GitHub repository URL for this project.
@@ -59,7 +71,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** Bright Desk appears as a project in its own UI and the remaining implementation work is visible as tasks.
 
-## Step 5 - Task Listing and Task Creation
+## Step 6 - Task Listing and Task Creation
 
 - [ ] Implement `GET /api/projects/{projectId}` for project metadata, tasks, decisions, and file versions.
 - [ ] Display active tasks in the selected project view.
@@ -73,7 +85,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the UI can create a task and immediately show its branch and checkout directory.
 
-## Step 6 - Task Editing and Status Changes
+## Step 7 - Task Editing and Status Changes
 
 - [ ] Implement `PATCH /api/projects/{projectId}/tasks/{taskId}`.
 - [ ] Allow editing title, description, priority, acceptance criteria, and branch for not-started tasks.
@@ -85,7 +97,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the UI can safely edit tasks and update task status without overwriting external YAML changes.
 
-## Step 7 - Pending Decisions
+## Step 8 - Pending Decisions
 
 - [ ] Display pending decisions above tasks.
 - [ ] Show decision status, related task ID, question, context, and options.
@@ -97,7 +109,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** the UI can answer a pending decision and persist the answer to `pending_decisions.yaml`.
 
-## Step 8 - Cleanup Completed Tasks
+## Step 9 - Cleanup Completed Tasks
 
 - [ ] Implement `POST /api/projects/{projectId}/cleanup`.
 - [ ] Move completed tasks from `tasks.yaml` to `completed_tasks.yaml`.
@@ -108,7 +120,7 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 **Done when:** completed tasks can be archived without data loss.
 
-## Step 9 - File Watching and Refresh
+## Step 10 - File Watching and Refresh
 
 - [ ] Add manual `Refresh project` behavior.
 - [ ] Add file watching for project YAML files where supported.
@@ -117,17 +129,6 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 - [ ] Keep invalid YAML visible as a project-level error and prevent overwrites.
 
 **Done when:** external edits to project YAML are detected and handled safely.
-
-## Step 10 - Snap Packaging
-
-- [ ] Add Snap packaging configuration.
-- [ ] Package the SvelteKit app as a service suitable for a headless server.
-- [ ] Use strict confinement.
-- [ ] Document supported workspace locations under strict confinement.
-- [ ] Expose Snap configuration for workspace path, host, and port.
-- [ ] Document that MVP authentication is not included and network access must be restricted externally.
-
-**Done when:** the app can be installed and run as a strictly confined Snap.
 
 ## Step 11 - MVP Polish and Validation
 
