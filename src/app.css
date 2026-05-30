@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-paper: #fbfaf7;
+	--color-surface: #ffffff;
+	--color-surface-muted: #f3f1eb;
+	--color-border: #dedbd2;
+	--color-ink: #1f2523;
+	--color-muted: #66706b;
+	--color-primary: #246bfe;
+	--color-primary-soft: #e8efff;
+	--color-decision: #0f8b8d;
+	--color-decision-soft: #e4f6f6;
+	--color-success: #168a5b;
+	--color-success-soft: #e8f6ef;
+	--color-warning: #b7791f;
+	--color-warning-soft: #fff4d8;
+	--color-danger: #c2413a;
+	--color-danger-soft: #fdebea;
+	--color-focus: #ffb703;
+	--font-sans:
+		'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', 'Source Sans 3', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+:root {
+	color-scheme: light;
+	background: var(--color-paper);
+	color: var(--color-ink);
+	font-family: var(--font-sans);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at 1px 1px, rgb(31 37 35 / 5%) 1px, transparent 0) 0 0 / 24px 24px,
+		var(--color-paper);
+}
+
+button,
+input,
+textarea {
+	font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 3px;
+}
