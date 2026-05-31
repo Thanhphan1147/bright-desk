@@ -15,7 +15,21 @@ npm install
 Start the development server:
 
 ```sh
+BRIGHT_DESK_WORKSPACE=/path/to/workspace
 npm run dev
+```
+
+`BRIGHT_DESK_WORKSPACE` must point to an existing directory. Bright Desk refuses project file
+operations outside that configured workspace and shows a visible state when the path is missing,
+invalid, or inaccessible.
+
+When installed as a Snap, Bright Desk defaults to `/home/workspace`. Create that host directory
+before using the default, or override it with:
+
+```sh
+sudo mkdir -p /home/workspace
+sudo snap set bright-desk workspace=/path/to/workspace
+sudo snap restart bright-desk
 ```
 
 Run validation:

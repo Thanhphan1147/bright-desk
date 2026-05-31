@@ -30,12 +30,18 @@ sudo snap install --dangerous ./bright-desk_0.0.1_amd64.snap
 
 ## Configure
 
-The service defaults to `0.0.0.0:3300` and stores workspace data in `$SNAP_COMMON/workspace`.
+The service defaults to `0.0.0.0:3300` and uses `/home/workspace` as the workspace path.
+The Snap exposes `host`, `port`, and `workspace` configuration keys for deployments that need
+different values.
+
+Create `/home/workspace` on the host before using the default workspace. Under strict confinement,
+the service can use that directory through the `home` interface but does not create it automatically.
 
 ```sh
+sudo mkdir -p /home/workspace
 sudo snap set bright-desk host=0.0.0.0
 sudo snap set bright-desk port=3300
-sudo snap set bright-desk workspace=/var/snap/bright-desk/common/workspace
+sudo snap set bright-desk workspace=/home/workspace
 sudo snap restart bright-desk
 ```
 
