@@ -38,14 +38,14 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 ## Step 3 - YAML Schemas and File Repository
 
-- [ ] Define runtime schemas for `project.yaml`.
-- [ ] Define runtime schemas for `tasks.yaml`.
-- [ ] Define runtime schemas for `pending_decisions.yaml`.
-- [ ] Define runtime schemas for `completed_tasks.yaml`.
-- [ ] Implement YAML read, parse, validate, and serialize helpers.
-- [ ] Implement atomic write using temporary file plus rename.
-- [ ] Implement file version metadata using mtime and content hash.
-- [ ] Preserve unknown fields when mutating known task, decision, and project fields.
+- [x] Define runtime schemas for `project.yaml`.
+- [x] Define runtime schemas for `tasks.yaml`.
+- [x] Define runtime schemas for `pending_decisions.yaml`.
+- [x] Define runtime schemas for `completed_tasks.yaml`.
+- [x] Implement YAML read, parse, validate, and serialize helpers.
+- [x] Implement atomic write using temporary file plus rename.
+- [x] Implement file version metadata using mtime and content hash.
+- [x] Preserve unknown fields when mutating known task, decision, and project fields.
 
 **Done when:** tests can read, validate, update, and atomically write representative project YAML files without losing unknown fields.
 

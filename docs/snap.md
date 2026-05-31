@@ -37,6 +37,10 @@ different values.
 Create `/home/workspace` on the host before using the default workspace. Under strict confinement,
 the service can use that directory through the `home` interface but does not create it automatically.
 
+Strict Snap confinement does not allow this daemon to switch to an arbitrary host user from inside
+the wrapper. Keep the workspace directory permissions aligned with the deployed Snap service and
+restrict network access externally because the MVP has no authentication.
+
 ```sh
 sudo mkdir -p /home/workspace
 sudo snap set bright-desk host=0.0.0.0
