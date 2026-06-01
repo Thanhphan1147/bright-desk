@@ -1,4 +1,5 @@
-import { access, stat } from 'node:fs/promises';
+import { constants } from 'node:fs';
+import { access, readdir, stat } from 'node:fs/promises';
 import { resolve, relative, isAbsolute } from 'node:path';
 
 const WORKSPACE_ENV = 'BRIGHT_DESK_WORKSPACE';
@@ -50,7 +51,8 @@ export async function getWorkspaceStatus(
 			};
 		}
 
-		await access(workspacePath);
+		await access(workspacePath, constants.R_OK | constants.W_OK);
+		await readdir(workspacePath);
 	} catch (error) {
 		const code = error instanceof Error && 'code' in error ? error.code : undefined;
 
