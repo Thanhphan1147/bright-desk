@@ -36,6 +36,8 @@ different values.
 
 Create `/home/workspace` on the host before using the default workspace. Under strict confinement,
 the service can use that directory through the `home` interface but does not create it automatically.
+If your host policy denies that top-level home path to the confined service, configure a writable
+Snap-owned workspace such as `/var/snap/bright-desk/common/workspace`.
 
 Strict Snap confinement does not allow this daemon to switch to an arbitrary host user from inside
 the wrapper. Keep the workspace directory permissions aligned with the deployed Snap service and
@@ -46,6 +48,14 @@ sudo mkdir -p /home/workspace
 sudo snap set bright-desk host=0.0.0.0
 sudo snap set bright-desk port=3300
 sudo snap set bright-desk workspace=/home/workspace
+sudo snap restart bright-desk
+```
+
+Fallback confined workspace:
+
+```sh
+sudo mkdir -p /var/snap/bright-desk/common/workspace
+sudo snap set bright-desk workspace=/var/snap/bright-desk/common/workspace
 sudo snap restart bright-desk
 ```
 

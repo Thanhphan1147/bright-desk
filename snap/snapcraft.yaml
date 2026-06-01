@@ -40,10 +40,13 @@ parts:
 
       npm ci
       npm run build
+      npm prune --omit=dev
 
       mkdir -p "$CRAFT_PART_INSTALL/app" "$CRAFT_PART_INSTALL/bin" "$CRAFT_PART_INSTALL/usr"
       cp -R node "$CRAFT_PART_INSTALL/usr/node"
       ln -s ../usr/node/bin/node "$CRAFT_PART_INSTALL/bin/node"
       cp -R build "$CRAFT_PART_INSTALL/app/build"
+      cp package.json package-lock.json "$CRAFT_PART_INSTALL/app/"
+      cp -R node_modules "$CRAFT_PART_INSTALL/app/node_modules"
       cp snap/local/bright-desk "$CRAFT_PART_INSTALL/bin/bright-desk"
       chmod 0755 "$CRAFT_PART_INSTALL/bin/bright-desk"

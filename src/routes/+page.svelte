@@ -3,17 +3,15 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const projects = [
-		{ name: 'Bright Desk', repo: 'Thanhphan1147/bright-desk', decisions: 0, tasks: 11, blocked: 0 },
-		{
-			name: 'Snap Packaging',
-			repo: 'Thanhphan1147/bright-desk',
-			decisions: 1,
-			tasks: 3,
-			blocked: 1
-		},
-		{ name: 'Agent Runtime Later', repo: 'future/runtime', decisions: 0, tasks: 2, blocked: 0 }
-	];
+	let createProjectMessage = $state('');
+	let createProjectError = $state('');
+	let isCreatingProject = $state(false);
+	let createdProjects = $state<PageData['projects']>([]);
+
+	let projects = $derived(
+		[...data.projects, ...createdProjects].sort((a, b) => a.name.localeCompare(b.name))
+	);
+	let selectedProject = $derived(projects[0]);
 
 	const statusClasses = {
 		in_progress: 'bg-primary-soft text-primary',
@@ -67,6 +65,54 @@
 			classes: 'border-danger bg-danger-soft text-danger'
 		}
 	} as const;
+
+	function repositoryLabel(githubUrl?: string) {
+		return githubUrl?.replace(/^https:\/\/github\.com\//, '') ?? 'Repository not configured';
+	}
+
+	async function createProject(event: SubmitEvent) {
+		event.preventDefault();
+
+		const form = event.currentTarget;
+
+		if (!(form instanceof HTMLFormElement)) {
+			return;
+		}
+
+		const formData = new FormData(form);
+		createProjectError = '';
+		createProjectMessage = '';
+		isCreatingProject = true;
+
+		try {
+			const response = await fetch('/api/projects', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify({
+					name: formData.get('name'),
+					githubUrl: formData.get('githubUrl')
+				})
+			});
+			const result = await response.json();
+
+			if (!response.ok) {
+				createProjectError = result.message ?? 'Project could not be created.';
+				return;
+			}
+
+			createProjectMessage = `Created ${result.project.name}.`;
+			createdProjects = [...createdProjects, result.project];
+			form.reset();
+		} catch (error) {
+			createProjectError = error instanceof Error ? error.message : 'Project could not be created.';
+		} finally {
+			isCreatingProject = false;
+		}
+	}
+
+	function openRepository(url: string) {
+		window.open(url, '_blank', 'noopener,noreferrer');
+	}
 </script>
 
 <svelte:head>
@@ -95,7 +141,12 @@
 		</div>
 
 		<nav class="grid gap-2" aria-label="Project list">
-			{#each projects as project, index (project.name)}
+			{#if projects.length === 0}
+				<p class="rounded-[0.875rem] bg-surface-muted p-3.5 text-sm text-muted">
+					No projects found. Create one to initialize workspace YAML files.
+				</p>
+			{/if}
+			{#each projects as project, index (project.id)}
 				<button
 					class={`grid gap-2 rounded-[0.875rem] border-y-0 border-r-0 border-l-[3px] p-3.5 text-left text-ink transition hover:bg-surface-muted ${
 						index === 0 ? 'border-l-primary bg-primary-soft' : 'border-l-transparent bg-transparent'
@@ -105,15 +156,15 @@
 				>
 					<span>
 						<strong class="block">{project.name}</strong>
-						<small class="font-mono text-muted">{project.repo}</small>
+						<small class="font-mono text-muted">{repositoryLabel(project.githubUrl)}</small>
 					</span>
 					<span class="text-[0.8125rem] text-muted">
-						{project.decisions} decisions · {project.tasks} tasks
-						{#if project.blocked}
+						{project.pendingDecisions} decisions · {project.activeTasks} tasks
+						{#if project.error}
 							<em
-								class="ml-1 inline-block rounded-full bg-warning-soft px-1.5 py-0.5 text-warning not-italic"
+								class="ml-1 inline-block rounded-full bg-danger-soft px-1.5 py-0.5 text-danger not-italic"
 							>
-								{project.blocked} blocked
+								Invalid YAML
 							</em>
 						{/if}
 					</span>
@@ -164,16 +215,19 @@
 					id="project-title"
 					class="text-4xl leading-none font-bold tracking-[-0.05em] md:text-6xl"
 				>
-					Bright Desk
+					{selectedProject?.name ?? 'No project selected'}
 				</h2>
-				<a
-					class="font-mono text-muted hover:text-primary"
-					href="https://github.com/Thanhphan1147/bright-desk"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					github.com/Thanhphan1147/bright-desk
-				</a>
+				{#if selectedProject?.githubUrl}
+					<button
+						class="font-mono text-muted hover:text-primary"
+						type="button"
+						onclick={() => selectedProject?.githubUrl && openRepository(selectedProject.githubUrl)}
+					>
+						{repositoryLabel(selectedProject.githubUrl)}
+					</button>
+				{:else}
+					<p class="font-mono text-muted">Create a project with a GitHub repository URL.</p>
+				{/if}
 			</div>
 			<div class="flex flex-wrap gap-3">
 				<button
@@ -192,9 +246,15 @@
 		</header>
 
 		<div class="flex flex-wrap gap-2" aria-label="Project summary">
-			<span class={`${chip} bg-surface-muted text-muted`}>0 pending decisions</span>
-			<span class={`${chip} bg-surface-muted text-muted`}>11 active tasks</span>
-			<span class={`${chip} bg-surface-muted text-muted`}>0 blocked</span>
+			<span class={`${chip} bg-surface-muted text-muted`}>
+				{selectedProject?.pendingDecisions ?? 0} pending decisions
+			</span>
+			<span class={`${chip} bg-surface-muted text-muted`}>
+				{selectedProject?.activeTasks ?? 0} active tasks
+			</span>
+			<span class={`${chip} bg-surface-muted text-muted`}>
+				{selectedProject?.completedTasks ?? 0} completed
+			</span>
 		</div>
 
 		<section
@@ -260,40 +320,43 @@
 		class={`${baseCard} grid gap-4 self-start p-4 lg:col-span-2 xl:col-span-1`}
 		aria-labelledby="detail-title"
 	>
-		<p class={eyebrow}>Task draft</p>
-		<h3 id="detail-title" class="text-xl font-bold">Create task</h3>
-		<label class="grid gap-1.5 font-bold">
-			Task title
-			<input
-				class="w-full rounded-xl border border-border p-3 text-ink"
-				value="Configure workspace path safety"
-			/>
-		</label>
-		<label class="grid gap-1.5 font-bold">
-			Git branch
-			<input
-				class="w-full rounded-xl border border-border p-3 text-ink"
-				value="agent/task-001-workspace-configuration"
-			/>
-		</label>
-		<p class="text-muted">Agents will check out the project repository on this branch.</p>
-		<label class="grid gap-1.5 font-bold">
-			Description
-			<textarea class="w-full resize-y rounded-xl border border-border p-3 text-ink" rows="5"
-				>Load a configured workspace and prevent access outside that boundary.</textarea
+		<p class={eyebrow}>Project setup</p>
+		<h3 id="detail-title" class="text-xl font-bold">Create project</h3>
+		<form class="grid gap-4" onsubmit={createProject}>
+			<label class="grid gap-1.5 font-bold">
+				Project name
+				<input
+					class="w-full rounded-xl border border-border p-3 text-ink"
+					name="name"
+					placeholder="Bright Desk"
+					required
+				/>
+			</label>
+			<label class="grid gap-1.5 font-bold">
+				GitHub repository URL
+				<input
+					class="w-full rounded-xl border border-border p-3 text-ink"
+					name="githubUrl"
+					placeholder="https://github.com/owner/repo"
+					required
+				/>
+			</label>
+			<p class="text-muted">
+				Creates project.yaml, tasks.yaml, pending_decisions.yaml, and completed_tasks.yaml.
+			</p>
+			{#if createProjectError}
+				<p class="rounded-xl bg-danger-soft p-3 font-bold text-danger">{createProjectError}</p>
+			{/if}
+			{#if createProjectMessage}
+				<p class="rounded-xl bg-success-soft p-3 font-bold text-success">{createProjectMessage}</p>
+			{/if}
+			<button
+				class="rounded-full border border-primary bg-primary px-4 py-2.5 font-bold text-white disabled:opacity-60"
+				type="submit"
+				disabled={isCreatingProject || data.workspace.status !== 'ready'}
 			>
-		</label>
-		<div class="grid gap-1 rounded-xl bg-surface-muted p-3">
-			<span class="text-xs font-bold text-muted">Checkout directory</span>
-			<code class="break-anywhere font-mono text-[0.8125rem] text-muted">
-				checkouts/task-001--agent-task-001-workspace-configuration
-			</code>
-		</div>
-		<button
-			class="rounded-full border border-primary bg-primary px-4 py-2.5 font-bold text-white"
-			type="button"
-		>
-			Create task
-		</button>
+				{isCreatingProject ? 'Creating...' : 'Create project'}
+			</button>
+		</form>
 	</aside>
 </main>

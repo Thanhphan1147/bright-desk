@@ -51,15 +51,15 @@ Goal: build the smallest useful version of Bright Desk that can manage this proj
 
 ## Step 4 - Project Discovery and Project Creation
 
-- [ ] Discover immediate child directories of the workspace as projects.
-- [ ] Recognize projects containing `project.yaml`, `tasks.yaml`, `pending_decisions.yaml`, `completed_tasks.yaml`, or `context/`.
-- [ ] Implement `GET /api/projects`.
-- [ ] Implement `POST /api/projects`.
-- [ ] Require project name and GitHub repository URL when creating a project.
-- [ ] Validate and normalize GitHub URLs to `https://github.com/{owner}/{repo}`.
-- [ ] Create initial `project.yaml`, `tasks.yaml`, `pending_decisions.yaml`, and `completed_tasks.yaml`.
-- [ ] Add create-project UI with required GitHub repository URL field.
-- [ ] Show the GitHub repository link in the selected project header.
+- [x] Discover immediate child directories of the workspace as projects.
+- [x] Recognize projects containing `project.yaml`, `tasks.yaml`, `pending_decisions.yaml`, `completed_tasks.yaml`, or `context/`.
+- [x] Implement `GET /api/projects`.
+- [x] Implement `POST /api/projects`.
+- [x] Require project name and GitHub repository URL when creating a project.
+- [x] Validate and normalize GitHub URLs to `https://github.com/{owner}/{repo}`.
+- [x] Create initial `project.yaml`, `tasks.yaml`, `pending_decisions.yaml`, and `completed_tasks.yaml`.
+- [x] Add create-project UI with required GitHub repository URL field.
+- [x] Show the GitHub repository link in the selected project header.
 
 **Done when:** the UI can create and list a project linked to a GitHub repository.
 

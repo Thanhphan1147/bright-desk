@@ -29,7 +29,14 @@ export async function readVersionedYaml<T>(
 	schema: ZodType<T>
 ): Promise<VersionedYaml<T>> {
 	const content = await readFile(filePath, 'utf8');
-	const parsed = parse(content);
+	let parsed: unknown;
+
+	try {
+		parsed = parse(content);
+	} catch (error) {
+		throw new YamlRepositoryError(`Invalid YAML data in ${filePath}`, error);
+	}
+
 	const result = schema.safeParse(parsed);
 
 	if (!result.success) {
